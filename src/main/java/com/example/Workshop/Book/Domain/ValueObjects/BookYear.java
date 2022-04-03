@@ -21,6 +21,6 @@ public class BookYear extends IntValueObject {
             throw new BusinessRuleValidationException("Year needs to have 4 characters");
 
         if (value > LocalDate.now().getYear())
-            throw new BusinessRuleValidationException("Invalid year");
+            throw new BusinessRuleValidationException("Year should not be greater than the current one");
     }
 }

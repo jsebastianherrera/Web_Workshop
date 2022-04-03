@@ -17,6 +17,6 @@ public class BookTitle extends StringValueObject implements Serializable {
 
     private void titleValidation(String value) {
         if (value.length() < 5 || value.length() > 100)
-            throw new BusinessRuleValidationException("Invalid length title");
+            throw new BusinessRuleValidationException("Title length should be between 5 and 100 characters");
     }
 }

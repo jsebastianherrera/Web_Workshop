@@ -15,7 +15,7 @@ public class BookDescription extends StringValueObject {
     }
 
     private void descriptionForm(String value) {
-        if (value.length() < 4 || value.length() > 200)
-            throw new BusinessRuleValidationException("Invalid length description");
+        if (value.length() > 200)
+            throw new BusinessRuleValidationException("Description length should not be greater than 200 characters");
     }
 }

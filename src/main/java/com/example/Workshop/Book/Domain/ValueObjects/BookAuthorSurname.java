@@ -2,6 +2,7 @@ package com.example.Workshop.Book.Domain.ValueObjects;
 
 import com.example.Workshop.Shared.Domain.Aggregate.StringValueObject;
 import com.example.Workshop.Shared.Domain.Exceptions.BusinessRuleValidationException;
+import org.apache.commons.lang3.StringUtils;
 
 public class BookAuthorSurname extends StringValueObject {
 
@@ -15,7 +16,7 @@ public class BookAuthorSurname extends StringValueObject {
     }
 
     private void surnameForm(String value) {
-        if (value.length() < 4 || value.length() > 40)
-            throw new BusinessRuleValidationException("Invalid length surname");
+        if (StringUtils.isBlank(value))
+            throw new BusinessRuleValidationException("Author surname should not be empty");
     }
 }

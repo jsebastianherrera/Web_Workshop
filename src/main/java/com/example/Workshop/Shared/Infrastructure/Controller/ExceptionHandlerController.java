@@ -8,6 +8,7 @@ import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.ControllerAdvice;
 import org.springframework.web.bind.annotation.ExceptionHandler;
 
+import java.sql.SQLException;
 import java.util.HashMap;
 
 @ControllerAdvice
@@ -29,6 +30,12 @@ public class ExceptionHandlerController {
     public ResponseEntity<HashMap<String, String>> handleBusinessRuleValidationException(BusinessRuleValidationException exception) {
         HashMap<String, String> response = createResponseHashMap(exception.getMessage());
         return ResponseEntity.status(HttpStatus.BAD_REQUEST).body(response);
+    }
+
+    @ExceptionHandler(SQLException.class)
+    public ResponseEntity<HashMap<String, String>> handleSQLException(SQLException exception) {
+        HashMap<String, String> response = createResponseHashMap(exception.getCause().getMessage());
+        return ResponseEntity.status(HttpStatus.INTERNAL_SERVER_ERROR).body(response);
     }
 
     private HashMap<String, String> createResponseHashMap(String error) {

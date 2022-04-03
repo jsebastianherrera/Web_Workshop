@@ -34,7 +34,7 @@ public class ExceptionHandlerController {
 
     @ExceptionHandler(SQLException.class)
     public ResponseEntity<HashMap<String, String>> handleSQLException(SQLException exception) {
-        HashMap<String, String> response = createResponseHashMap(exception.getCause().getMessage());
+        HashMap<String, String> response = createResponseHashMap(exception.getCause().getCause().getMessage());
         return ResponseEntity.status(HttpStatus.INTERNAL_SERVER_ERROR).body(response);
     }
 

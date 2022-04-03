@@ -9,7 +9,10 @@ import com.example.Workshop.Book.Domain.ValueObjects.BookPages;
 import com.example.Workshop.Book.Domain.ValueObjects.BookPrice;
 import com.example.Workshop.Book.Domain.ValueObjects.BookTitle;
 import com.example.Workshop.Book.Domain.ValueObjects.BookYear;
+import com.example.Workshop.Shared.Domain.Exceptions.ExistingBookException;
 import lombok.RequiredArgsConstructor;
+
+import java.util.Optional;
 
 @RequiredArgsConstructor
 public class BookCreator {
@@ -18,6 +21,11 @@ public class BookCreator {
 
     public Book execute(String authorName, String authorSurname, String description, int pages, int price,
                         String title, int year) {
+
+        Optional<Book> existingBook = repository.findByTitle(new BookTitle(title));
+        if (existingBook.isPresent())
+            throw new ExistingBookException("Book with title %s already exists", title);
+
         Book book = Book.create(
                 new BookAuthorName(authorName),
                 new BookAuthorSurname(authorSurname),
@@ -28,6 +36,6 @@ public class BookCreator {
                 new BookYear(year)
         );
 
-        return book;
+        return repository.save(book);
     }
 }

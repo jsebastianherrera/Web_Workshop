@@ -1,0 +1,39 @@
+<?xml version = "1.0" encoding = "utf-8"?>
+<!DOCTYPE hibernate-mapping PUBLIC
+        "-//Hibernate/Hibernate Mapping DTD//EN"
+        "http://www.hibernate.org/dtd/hibernate-mapping-3.0.dtd">
+
+<hibernate-mapping>
+    <class name="com.example.Workshop.Book.Domain.Book" table="books">
+        <composite-id name="bookTitle" class="com.example.Workshop.Book.Domain.ValueObjects.BookTitle" access="field">
+            <key-property name="value" column="title" access="field" type="string"/>
+        </composite-id>
+
+        <component name="bookAuthorName" class="com.example.Workshop.Book.Domain.ValueObjects.BookAuthorName"
+                   access="field">
+            <property name="value" column="authorName" access="field" type="string"/>
+        </component>
+
+        <component name="bookAuthorSurname" class="com.example.Workshop.Book.Domain.ValueObjects.BookAuthorSurname"
+                   access="field">
+            <property name="value" column="authorSurname" access="field" type="string"/>
+        </component>
+
+        <component name="bookDescription" class="com.example.Workshop.Book.Domain.ValueObjects.BookDescription"
+                   access="field">
+            <property name="value" column="description" access="field" type="string"/>
+        </component>
+
+        <component name="bookPages" class="com.example.Workshop.Book.Domain.ValueObjects.BookPages" access="field">
+            <property name="value" column="pages" access="field" type="int"/>
+        </component>
+
+        <component name="bookPrice" class="com.example.Workshop.Book.Domain.ValueObjects.BookPrice" access="field">
+            <property name="value" column="price" access="field" type="int"/>
+        </component>
+
+        <component name="bookYear" class="com.example.Workshop.Book.Domain.ValueObjects.BookYear" access="field">
+            <property name="value" column="year" access="field" type="int"/>
+        </component>
+    </class>
+</hibernate-mapping>

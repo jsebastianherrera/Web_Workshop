@@ -2,7 +2,9 @@ package com.example.Workshop.Book.Domain.ValueObjects;
 
 import com.example.Workshop.Shared.Domain.Aggregate.StringValueObject;
 
-public class BookTitle extends StringValueObject {
+import java.io.Serializable;
+
+public class BookTitle extends StringValueObject implements Serializable {
     public BookTitle(String value) {
         super(value);
         validate(value);

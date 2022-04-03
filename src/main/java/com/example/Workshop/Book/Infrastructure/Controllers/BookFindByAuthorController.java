@@ -2,7 +2,6 @@ package com.example.Workshop.Book.Infrastructure.Controllers;
 
 import com.example.Workshop.Book.Application.FindByAuthor.BookFindByAuthor;
 import com.example.Workshop.Book.Application.FindByAuthor.BookFindByAuthorResponse;
-import com.example.Workshop.Book.Application.FindByTitle.BookFindByTitleResponse;
 import lombok.Data;
 import lombok.RequiredArgsConstructor;
 import org.springframework.http.HttpStatus;
@@ -12,7 +11,6 @@ import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
-import java.awt.print.Book;
 import java.util.HashMap;
 import java.util.List;
 

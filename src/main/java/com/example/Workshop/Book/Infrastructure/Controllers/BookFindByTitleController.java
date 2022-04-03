@@ -20,7 +20,7 @@ public class BookFindByTitleController {
 
     @GetMapping(value = "/title/{title}")
     public ResponseEntity<HashMap<String, Object>> execute(@PathVariable(name = "title") String title) {
-        BookFindByTitleResponse response = new BookFindByTitleResponse(findByTitle.execute());
+        BookFindByTitleResponse response = new BookFindByTitleResponse(findByTitle.execute(title));
         return ResponseEntity.status(HttpStatus.OK).body(response.response());
     }
 }

@@ -1,5 +1,6 @@
 package com.example.Workshop.Shared.Infrastructure.Controller;
 
+import com.example.Workshop.Shared.Domain.Exceptions.BusinessRuleValidationException;
 import com.example.Workshop.Shared.Domain.Exceptions.ExistingBookException;
 import com.example.Workshop.Shared.Domain.Exceptions.NotFoundException;
 import org.springframework.http.HttpStatus;
@@ -22,6 +23,12 @@ public class ExceptionHandlerController {
     public ResponseEntity<HashMap<String, String>> handleExistingBookException(ExistingBookException exception) {
         HashMap<String, String> response = createResponseHashMap(exception.getMessage());
         return ResponseEntity.status(HttpStatus.CONFLICT).body(response);
+    }
+
+    @ExceptionHandler(BusinessRuleValidationException.class)
+    public ResponseEntity<HashMap<String, String>> handleBusinessRuleValidationException(BusinessRuleValidationException exception) {
+        HashMap<String, String> response = createResponseHashMap(exception.getMessage());
+        return ResponseEntity.status(HttpStatus.BAD_REQUEST).body(response);
     }
 
     private HashMap<String, String> createResponseHashMap(String error) {

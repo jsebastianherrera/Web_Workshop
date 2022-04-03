@@ -2,6 +2,7 @@ package com.example.Workshop.Book.Domain.ValueObjects;
 
 import com.example.Workshop.Shared.Domain.Aggregate.IntValueObject;
 import com.example.Workshop.Shared.Domain.Aggregate.StringValueObject;
+import com.example.Workshop.Shared.Domain.Exceptions.BusinessRuleValidationException;
 
 import java.time.LocalDate;
 
@@ -17,9 +18,9 @@ public class BookYear extends IntValueObject {
 
     private void yearValidation(int value) {
         if (StringValueObject.intToString(value).length() != 4)
-            throw new RuntimeException("Year needs to have 4 characters");
+            throw new BusinessRuleValidationException("Year needs to have 4 characters");
 
         if (value > LocalDate.now().getYear())
-            throw new RuntimeException("Invalid year");
+            throw new BusinessRuleValidationException("Invalid year");
     }
 }

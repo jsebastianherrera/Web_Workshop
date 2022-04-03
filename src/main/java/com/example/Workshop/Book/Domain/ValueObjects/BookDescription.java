@@ -1,6 +1,7 @@
 package com.example.Workshop.Book.Domain.ValueObjects;
 
 import com.example.Workshop.Shared.Domain.Aggregate.StringValueObject;
+import com.example.Workshop.Shared.Domain.Exceptions.BusinessRuleValidationException;
 
 public class BookDescription extends StringValueObject {
 
@@ -15,6 +16,6 @@ public class BookDescription extends StringValueObject {
 
     private void descriptionForm(String value) {
         if (value.length() < 4 || value.length() > 200)
-            throw new RuntimeException("Invalid length description");
+            throw new BusinessRuleValidationException("Invalid length description");
     }
 }

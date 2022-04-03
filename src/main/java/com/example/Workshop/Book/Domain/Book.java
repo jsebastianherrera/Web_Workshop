@@ -26,7 +26,7 @@ public class Book {
     private BookYear bookYear;
 
     public static Book create(BookAuthorName authorName, BookAuthorSurname authorSurname, BookDescription description,
-                       BookPages pages, BookPrice price, BookTitle title, BookYear year) {
+                              BookPages pages, BookPrice price, BookTitle title, BookYear year) {
         return Book.builder()
                 .bookAuthorName(authorName)
                 .bookAuthorSurname(authorSurname)
@@ -47,6 +47,14 @@ public class Book {
             put("price", bookPrice.value());
             put("title", bookTitle.value());
             put("year", bookYear.value());
+        }};
+    }
+
+    public HashMap<String, Object> dataToAuthorFilter() {
+        String author = String.format("%s %s", bookAuthorName.value(), bookAuthorSurname.value());
+        return new HashMap<>() {{
+            put("author", author);
+            put("title", bookTitle.value());
         }};
     }
 }

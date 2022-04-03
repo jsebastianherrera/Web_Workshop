@@ -12,6 +12,6 @@ public class BookFindByAuthorResponse {
     private List<Book> books;
 
     public List<HashMap<String, Object>> response() {
-        return books.stream().map(Book::data).collect(Collectors.toList());
+        return books.stream().map(Book::dataToAuthorFilter).collect(Collectors.toList());
     }
 }

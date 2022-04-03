@@ -1,10 +1,12 @@
-package com.example.Workshop.Author.Domain.ValueObjects;
+package com.example.Workshop.Book.Domain.ValueObjects;
 
 import com.example.Workshop.Shared.Domain.Aggregate.StringValueObject;
 
-public class AuthorName extends StringValueObject {
-    public AuthorName(String value) {
+public class BookAuthorName extends StringValueObject {
+
+    public BookAuthorName(String value) {
         super(value);
+        validate(value);
     }
 
     private void validate(String value) {

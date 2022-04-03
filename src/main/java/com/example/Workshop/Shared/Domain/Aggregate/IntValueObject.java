@@ -13,10 +13,6 @@ public class IntValueObject {
         return value;
     }
 
-    public static int stringToInt(String value) {
-        return Integer.parseInt(value);
-    }
-
     @Override
     public boolean equals(Object o) {
         if (this == o) return true;

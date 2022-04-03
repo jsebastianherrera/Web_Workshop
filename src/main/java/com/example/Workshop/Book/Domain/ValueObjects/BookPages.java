@@ -13,7 +13,7 @@ public class BookPages extends IntValueObject {
     }
 
     private void pagesValidation(int value) {
-        if (String.valueOf(value).length() < 1)
-            throw new RuntimeException("non-negative number of pages");
+        if (value < 1 || value > 1500)
+            throw new RuntimeException("Number of pages should be between 1 and 1500");
     }
 }

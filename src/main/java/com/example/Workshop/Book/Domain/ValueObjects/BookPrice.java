@@ -1,25 +1,19 @@
 package com.example.Workshop.Book.Domain.ValueObjects;
 
-import com.example.Workshop.Shared.Domain.Aggregate.DoubleValueObject;
+import com.example.Workshop.Shared.Domain.Aggregate.IntValueObject;
 
-public class BookPrice extends DoubleValueObject {
-    public BookPrice(double value) {
+public class BookPrice extends IntValueObject {
+    public BookPrice(int value) {
         super(value);
         validate(value);
     }
 
-    private void validate(double value) {
+    private void validate(int value) {
         priceValidation(value);
-        centsValidations(value);
     }
 
-    private void priceValidation(double value) {
+    private void priceValidation(int value) {
         if (value < 10000)
-            throw new RuntimeException("non-negative values are allowed");
-    }
-
-    private void centsValidations(double value) {
-        if (String.valueOf(value).contains("."))
-            throw new RuntimeException("cents are not allowed");
+            throw new RuntimeException("Price should be greater than 10000");
     }
 }

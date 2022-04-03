@@ -1,0 +1,19 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<beans xmlns="http://www.springframework.org/schema/beans"
+       xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+       xsi:schemaLocation="http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans.xsd">
+
+    <bean id="bookRepository" class="com.example.Workshop.Book.Infrastructure.Adapters.HibernateBookRepository"/>
+
+    <bean id="bookCreator" class="com.example.Workshop.Book.Application.Create.BookCreator">
+        <constructor-arg ref="bookRepository"/>
+    </bean>
+
+    <bean id="bookFindByTitle" class="com.example.Workshop.Book.Application.FindByTitle.BookFindByTitle">
+        <constructor-arg ref="bookRepository"/>
+    </bean>
+
+    <bean id="bookFindByAuthor" class="com.example.Workshop.Book.Application.FindByAuthor.BookFindByAuthor">
+        <constructor-arg ref="bookRepository"/>
+    </bean>
+</beans>

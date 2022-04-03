@@ -5,21 +5,21 @@ import com.example.Workshop.Shared.Domain.Aggregate.StringValueObject;
 
 import java.time.LocalDate;
 
-public class BookYear extends StringValueObject {
-    public BookYear(String value) {
+public class BookYear extends IntValueObject {
+    public BookYear(int value) {
         super(value);
         validate(value);
     }
 
-    private void validate(String value) {
+    private void validate(int value) {
         yearValidation(value);
     }
 
-    private void yearValidation(String value) {
-        if (value.length() != 4)
+    private void yearValidation(int value) {
+        if (StringValueObject.intToString(value).length() != 4)
             throw new RuntimeException("Year needs to have 4 characters");
 
-        if (IntValueObject.stringToInt(value) > LocalDate.now().getYear())
+        if (value > LocalDate.now().getYear())
             throw new RuntimeException("Invalid year");
     }
 }

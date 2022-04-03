@@ -21,6 +21,7 @@ build/**
 # Exclude Folder List #
 .gradle/
 build/
+gradle/wrapper/gradle-wrapper.properties
 
 
 ### Eclipse ###

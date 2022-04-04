@@ -5,10 +5,6 @@ import java.util.Objects;
 public class IntValueObject {
     protected int value;
 
-    public IntValueObject(int value) {
-        this.value = value;
-    }
-
     public int value(){
         return value;
     }

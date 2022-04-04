@@ -7,9 +7,6 @@ public class StringValueObject {
     public String value(){
         return value;
     }
-    public StringValueObject(String value) {
-        this.value = value;
-    }
 
     public static String intToString(int value) {
         return String.valueOf(value);

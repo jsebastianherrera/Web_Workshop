@@ -2,13 +2,15 @@ package com.example.Workshop.Book.Domain.ValueObjects;
 
 import com.example.Workshop.Shared.Domain.Aggregate.StringValueObject;
 import com.example.Workshop.Shared.Domain.Exceptions.BusinessRuleValidationException;
+import lombok.NoArgsConstructor;
 
 import java.io.Serializable;
 
+@NoArgsConstructor
 public class BookTitle extends StringValueObject implements Serializable {
     public BookTitle(String value) {
-        super(value);
         validate(value);
+        this.value = value;
     }
 
     private void validate(String value) {

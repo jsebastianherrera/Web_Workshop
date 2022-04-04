@@ -2,11 +2,13 @@ package com.example.Workshop.Book.Domain.ValueObjects;
 
 import com.example.Workshop.Shared.Domain.Aggregate.IntValueObject;
 import com.example.Workshop.Shared.Domain.Exceptions.BusinessRuleValidationException;
+import lombok.NoArgsConstructor;
 
+@NoArgsConstructor
 public class BookPages extends IntValueObject {
     public BookPages(int value) {
-        super(value);
         validate(value);
+        this.value = value;
     }
 
     private void validate(int value) {
